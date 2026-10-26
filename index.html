@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TableNow — бронювання ресторанів</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+        <div class="app">
+    <header class="top">
+        <div class="brand" id="brandHome" role="button" tabindex="0">Table
+            <span>Now</span>
+        </div>
+        <nav class="nav" id="userNav" style="display:none">
+            <button data-page="home">Пошук ресторанів</button>
+            <button data-page="bookings">Мої бронювання</button>
+        </nav>
+        <button class="userbtn" id="loginBtn">Увійти / Реєстрація</button>
+    </header>
+    <main class="wrap">
+        <section class="page active" id="landing">
+            <div class="hero"><div>
+                    <div class="eyebrow">TableNow · бронювання без дзвінків</div>
+                    <h1>Ваш ідеальний<br>вечір починається<br>з одного столика.</h1>
+                    <p>Знаходьте ресторани, обирайте атмосферу та бронюйте столик онлайн за кілька простих кроків.</p>
+                    <button class="primary" id="startBooking" style="margin-top:16px;padding:15px 24px">Забронювати столик</button>
+                    <p class="muted" style="font-size:13px">Щоб продовжити, увійдіть або створіть акаунт.</p>
+                </div>
+                <div class="heroart">
+                    <img src="images/restaurant-main.jpg.jpg"
+         alt="Інтер'єр ресторану"
+         class="heroart-image">
+                    <div class="artlabel">A good table. A better evening.</div>
+                </div>
+            </div>
+            <div class="sectionhead"><div>
+                <div class="eyebrow">Як це працює</div>
+                <h2>Три кроки до вашого столика</h2>
+            </div>
+        </div>
+        <div class="cards">
+            <article class="panel">
+                <div class="eyebrow">01</div>
+                <h3>Створіть акаунт</h3>
+                <p class="muted">Увійдіть або зареєструйтеся, щоб керувати своїми бронюваннями.</p>
+            </article>
+            <article class="panel">
+                <div class="eyebrow">02</div>
+                <h3>Оберіть ресторан</h3>
+                <p class="muted">Знайдіть заклад за кухнею, районом і ціновою категорією.</p>
+            </article>
+            <article class="panel">
+                <div class="eyebrow">03</div>
+                <h3>Забронюйте час</h3>
+                <p class="muted">Оберіть дату, час і кількість гостей та підтвердьте бронювання.</p>
+            </article>
+        </div>
+        </section>
+    <section class="page" id="home">
+<div class="hero">
+    <div>
+        <div class="eyebrow">Ваш наступний вечір починається тут</div>
+        <h1>Знайдіть свій<br>ідеальний столик.</h1>
+        <p>Відкривайте нові смаки, обирайте атмосферу та бронюйте столик онлайн — без дзвінків і очікування.</p>
+    </div>
+    <div class="heroart">
+        <div class="artlabel">A good table. A better evening.</div>
+    </div>
+</div>
+<div class="searchbox">
+    <div class="field">
+        <label for="query">Ресторан або кухня</label>
+        <input id="query" placeholder="Наприклад, італійська кухня"></div>
+        <div class="field">
+            <label for="location">Місцезнаходження</label>
+            <select id="location">
+                <option value="">Усі райони</option>
+                <option>Центр</option>
+                <option>Поділ</option>
+                <option>Печерськ</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="date">Дата візиту</label>
+            <input id="date" type="date"></div>
+            <button class="primary" id="searchBtn">Знайти столик</button>
+        </div>
+<div class="sectionhead">
+    <div>
+        <div class="eyebrow">Вибір редакції</div>
+        <h2>Популярні ресторани</h2>
+    </div>
+    <span class="muted" id="resultCount">4 заклади</span>
+</div>
+<div class="layout">
+    <aside class="filters">
+        <h3>Фільтри</h3>
+        <div>
+            <label>Тип кухні</label>
+                <select class="filterselect" id="cuisine">
+                    <option value="">Усі типи</option>
+                    <option value="Італійська">Італійська</option>
+                    <option value="Азійська">Азійська</option>
+                    <option value="Європейська">Європейська</option>
+                    <option value="Українська">Українська</option>
+                </select>
+        </div>
+        <div>
+            <label>Цінова категорія</label>
+                <label>
+                    <input type="checkbox" name="price" value="$"> $ — доступно</label>
+                    <label>
+                        <input type="checkbox" name="price" value="$$"> $$ — середня</label>
+                        <label>
+                            <input type="checkbox" name="price" value="$$$"> $$$ — преміум</label>
+                        </div>
+                        <div>
+                            <label>Розташування</label>
+                            <select class="filterselect" id="area">
+                                <option value="">Усі райони</option>
+                                <option>Центр</option>
+                                <option>Поділ</option>
+                                <option>Печерськ</option>
+                            </select>
+                        </div>
+                        <button class="smallbtn wide" id="resetBtn">Скинути фільтри</button>
+                    </aside>
+                    <div>
+                        <div class="cards" id="cards">
+                            <article class="restaurant" data-name="Verde Garden" data-cuisine="Європейська" data-price="$$" data-area="Центр">
+                                <div class="photo">
+                                    <img src="images/restaurant-1.jpg.jpg"
+                                    <span>Verde Garden</span>
+                                    <b class="tag">4.9 ★</b>
+                                </div>
+                                <div class="restbody">
+                                    <h3>Verde Garden</h3>
+                                    <div class="meta">Європейська кухня · Центр · $$</div>
+                                    <div class="restfoot">
+                                        <span class="price">$$ 
+                                            <span class="muted">/ особу</span>
+                                        </span>
+                                        <button class="smallbtn book" data-restaurant="Verde Garden">Деталі та бронювання</button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="restaurant" data-name="Sora Sushi" data-cuisine="Азійська" data-price="$$$" data-area="Печерськ">
+                                <div class="photo p2">
+                                    <img src="images/restaurant-2.jpg.jpg"
+                                    <span>Sora Sushi</span>
+                                    <b class="tag">4.8 ★</b>
+                                </div>
+                                <div class="restbody">
+                                    <h3>Sora Sushi</h3>
+                                    <div class="meta">Азійська кухня · Печерськ · $$$</div>
+                                    <div class="restfoot">
+                                        <span class="price">$$$ 
+                                            <span class="muted">/ особу</span>
+                                        </span>
+                                        <button class="smallbtn book" data-restaurant="Sora Sushi">Деталі та бронювання</button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="restaurant" data-name="Casa Mia" data-cuisine="Італійська" data-price="$$" data-area="Поділ">
+                                <div class="photo p3">
+                                    <img src="images/restaurant-3.jpg.jpg"
+                                    <span>Casa Mia</span>
+                                    <b class="tag">4.7 ★</b>
+                                </div><div class="restbody">
+                                    <h3>Casa Mia</h3>
+                                    <div class="meta">Італійська кухня · Поділ · $$</div>
+                                    <div class="restfoot">
+                                        <span class="price">$$ 
+                                            <span class="muted">/ особу</span>
+                                        </span>
+                                        <button class="smallbtn book" data-restaurant="Casa Mia">Деталі та бронювання</button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="restaurant" data-name="Дім Смаку" data-cuisine="Українська" data-price="$" data-area="Центр">
+                                <div class="photo p4">
+                                    <img src="images/restaurant-4.jpg.jpg"
+                                    <span>Дім Смаку</span>
+                                    <b class="tag">4.6 ★</b>
+                                </div><div class="restbody">
+                                    <h3>Дім Смаку</h3>
+                                    <div class="meta">Українська кухня · Центр · $</div>
+                                    <div class="restfoot">
+                                        <span class="price">$ 
+                                            <span class="muted">/ особу</span>
+                                        </span>
+                                        <button class="smallbtn book" data-restaurant="Дім Смаку">Деталі та бронювання</button>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="empty" id="empty">За заданими параметрами ресторанів не знайдено. Змініть пошуковий запит або фільтри.</div>
+                    </div>
+                </div>
+</section>
+
+<section class="page" id="detail">
+    <div class="sectionhead">
+        <div>
+            <div class="eyebrow">Сторінка ресторану</div>
+            <h2 id="detailName">Verde Garden</h2>
+        </div>
+        <button class="smallbtn" id="backHome">← До ресторанів</button>
+    </div>
+    <div class="detailgrid">
+        <div class="panel">
+            <div class="detailhero" id="detailHero">Verde Garden</div>
+            <div class="eyebrow">Про ресторан</div>
+            <h3 id="detailCuisine">Європейська кухня · $$</h3>
+            <p class="muted" id="detailDesc">Сезонні інгредієнти, авторська подача та затишна атмосфера для зустрічей із друзями або вечері удвох.</p>
+            <p>Адреса: вул. Хрещатик, 12, Київ</p>
+            <p>Години роботи: 12:00–23:00</p>
+            <div class="notice">Оберіть дату, час і кількість гостей, щоб перевірити доступність.</div>
+        </div>
+        <div class="panel">
+            <h3>Забронювати столик</h3>
+            <div class="steps">
+                <div class="step on">1. Час</div>
+                <div class="step">2. Дані</div>
+                <div class="step">3. Готово</div>
+            </div>
+            <div class="field">
+                <label for="bookDate">Дата</label>
+                <input id="bookDate" type="date"></div>
+                <p class="muted">Оберіть час</p>
+                <div class="timegrid" id="timegrid">
+                    <button class="timebtn">12:00</button>
+                    <button class="timebtn">13:30</button>
+                    <button class="timebtn">15:00</button>
+                    <button class="timebtn">17:00</button>
+                    <button class="timebtn">18:30</button>
+                    <button class="timebtn">20:00</button>
+                </div>
+                <div class="field">
+                    <label for="guests">Кількість гостей</label>
+                    <select id="guests">
+                        <option>1</option>
+                        <option selected>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                    </select>
+                </div>
+                <button class="primary wide" id="continueBooking">Продовжити бронювання</button>
+                <div id="bookingForm" style="display:none;margin-top:18px">
+                    <div class="formrow">
+                        <div class="field">
+                            <label for="guestName">Ваше ім'я</label>
+                            <input id="guestName" placeholder="Ім'я та прізвище">
+                        </div>
+                        <div class="field">
+                            <label for="guestEmail">Email</label>
+                            <input id="guestEmail" type="email" placeholder="name@email.com">
+                        </div>
+                    </div>
+                    <button class="primary wide" id="confirmBooking">Підтвердити бронювання</button>
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="page" id="confirmation">
+    <div class="panel" style="max-width:650px;margin:35px auto;text-align:center">
+        <div style="font-size:44px;color:var(--green)">✓</div>
+        <div class="eyebrow">Готово</div>
+        <h2>Столик заброньовано</h2>
+        <p class="muted">Ваше бронювання створено в межах демонстраційного прототипу.</p>
+        <div id="confirmDetails" class="notice" style="text-align:left"></div>
+        <button class="primary" id="viewBookings">Переглянути бронювання</button> 
+        <button class="smallbtn" id="newSearch">Знайти інший ресторан</button>
+    </div>
+</section>
+<section class="page" id="bookings">
+    <div class="sectionhead">
+        <div>
+            <div class="eyebrow">Особистий кабінет</div>
+            <h2>Мої бронювання</h2>
+            <p class="muted">Керуйте запланованими та попередніми відвідуваннями.</p>
+        </div>
+        <button class="primary" id="findMore">+ Знайти ресторан</button>
+    </div>
+    <div class="subnav">
+        <button class="pill active" data-tab="active">Активні</button>
+        <button class="pill" data-tab="past">Історія</button>
+    </div>
+    <div class="panel" id="bookingList"></div>
+</section>
+<section class="page" id="admin">
+    <div class="sectionhead"><div>
+        <div class="eyebrow">Приватний доступ</div>
+        <h2>Адмінпанель</h2>
+        <p class="muted">Цей розділ доступний лише після входу з демонстраційними даними адміністратора.</p>
+    </div>
+</div>
+<div class="detailgrid">
+    <div class="panel">
+        <h3>Додати ресторан</h3>
+        <div class="adminform">
+            <div class="field">
+                <label for="adminName">Назва</label>
+                <input id="adminName" placeholder="Назва ресторану"></div>
+                <div class="field">
+                    <label for="adminCuisine">Тип кухні</label>
+                    <select id="adminCuisine">
+                        <option>Європейська</option>
+                        <option>Італійська</option>
+                        <option>Азійська</option>
+                        <option>Українська</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="adminPrice">Цінова категорія</label>
+                    <select id="adminPrice">
+                        <option>$</option>
+                        <option>$$</option>
+                        <option>$$$</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="adminArea">Район</label>
+                    <select id="adminArea">
+                        <option>Центр</option>
+                        <option>Поділ</option>
+                        <option>Печерськ</option>
+                    </select>
+                </div>
+            </div>
+            <button class="primary wide" id="addRestaurant">Додати ресторан</button>
+        </div>
+        <div class="panel">
+            <h3>Огляд бронювань</h3>
+            <div id="adminReservations" class="muted">Поки що бронювань немає.</div>
+            <div class="notice">У реальному сервісі права адміністратора потрібно перевіряти на сервері. Ці дані призначені лише для демонстрації прототипу.</div>
+        </div>
+    </div>
+</section>
+<section class="page" id="login">
+    <div class="panel" style="max-width:470px;margin:35px auto">
+        <div class="eyebrow">Особистий кабінет</div>
+        <h2 id="authTitle">Увійти до TableNow</h2>
+        <p class="muted" id="authSubtitle">Увійдіть або створіть акаунт, щоб забронювати столик.</p>
+        <div class="subnav">
+            <button class="pill active" id="loginMode">Авторизація</button>
+            <button class="pill" id="registerMode">Реєстрація</button>
+        </div>
+        <div class="field" id="nameField" style="display:none">
+            <label for="accountName">Ім’я та прізвище</label>
+            <input id="accountName" placeholder="Ваше ім’я"></div>
+            <div class="field" style="margin-top:12px">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="name@email.com"></div>
+                <div class="field" style="margin-top:12px">
+                    <label for="password">Пароль</label>
+                    <input id="password" type="password" placeholder="Введіть пароль"></div>
+                    <button class="primary wide" id="fakeLogin">Увійти</button>
+                    <p class="muted" style="font-size:12px">Демонстраційний прототип: справжні облікові записи та серверна авторизація не підключені.</p>
+                </div>
+            </section>
+</main>
+    <footer class="footer">TableNow · Інтерактивний навчальний прототип · Дані ресторанів демонстраційні</footer>
+    <div class="toast" id="toast"></div>
+    <script src="js/app.js" defer></script>
+</body>
+</html>
